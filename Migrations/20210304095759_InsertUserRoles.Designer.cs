@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IdentityRolConfig.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20210304090111_CreatieIdentityTables")]
-    partial class CreatieIdentityTables
+    [Migration("20210304095759_InsertUserRoles")]
+    partial class InsertUserRoles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,6 +84,22 @@ namespace IdentityRolConfig.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "0fcec5a3-e59d-4cf9-b743-22dfd2ceb5d5",
+                            ConcurrencyStamp = "03ec6b74-a876-4985-90d9-add8b88a9466",
+                            Name = "Visitor",
+                            NormalizedName = "VISITOR"
+                        },
+                        new
+                        {
+                            Id = "ec22729b-70ed-4131-8869-1b0d06b3eaad",
+                            ConcurrencyStamp = "8a9c5991-49d0-4ae1-b42e-d5e80ec967ec",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -173,6 +189,40 @@ namespace IdentityRolConfig.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "5804c884-867a-4f4e-ac36-02a9bdb2fd21",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "76a333f0-7f37-4c42-806d-2f44e8bbd4f0",
+                            Email = "jos@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "JOS@GMAIL.COM",
+                            NormalizedUserName = "JOS",
+                            PasswordHash = "AQAAAAEAACcQAAAAEF+DXi8zBswK0uRbTT5ZZ4Lft1l4/6NCzQ8nR+S4r4uY08BjmySMhG9ycn3YimsFmQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "b1a598c2-95c1-4da8-9a2e-ca18ad440525",
+                            TwoFactorEnabled = false,
+                            UserName = "Jos"
+                        },
+                        new
+                        {
+                            Id = "a74b15bb-f463-4b7c-964b-84094b14bd16",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "59bbaf12-fabd-478a-9585-cb8db5cf3b14",
+                            Email = "joke@hotmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "JOKE@HOTMAIL.COM",
+                            NormalizedUserName = "JOKE",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB1MYZGh82r6JbO36jlMeGWhb9HZl/fo1yrhIRe135m6o8BmaWEHLzvWTbddgsMiXA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ed402dea-07f9-4567-8a36-fed48605548b",
+                            TwoFactorEnabled = false,
+                            UserName = "Joke"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -234,6 +284,18 @@ namespace IdentityRolConfig.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "189dc703-1b1e-455c-b9c6-231d7c53a30d",
+                            RoleId = "f036335a-faf2-4504-84c4-11a771d793ac"
+                        },
+                        new
+                        {
+                            UserId = "872e097d-91ef-425a-b1c6-25be392cce3a",
+                            RoleId = "e93ff7d8-a140-4fe7-b365-1ad5e8836674"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

@@ -30,7 +30,8 @@ namespace IdentityRolConfig
                 opts.UseSqlServer(Configuration.GetConnectionString("sqlConnection")));
 
             services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationContext>();
+                    .AddEntityFrameworkStores<ApplicationContext>();
+
             services.AddControllersWithViews();
         }
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IdentityRolConfig.Migrations
 {
-    public partial class CreatieIdentityTables : Migration
+    public partial class UserRolesconfig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,6 +44,20 @@ namespace IdentityRolConfig.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Employees",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Age = table.Column<int>(nullable: false),
+                    Position = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employees", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -152,6 +166,43 @@ namespace IdentityRolConfig.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "af2c13b4-6bb6-40b0-842c-6cacd4e3e10e", "e7237b5e-fdd9-4536-be09-a30e0dd80488", "Visitor", "VISITOR" },
+                    { "759d7c73-04e0-40b3-b590-68010bc1148f", "451e6c4f-5529-46ce-9d73-0caf8c3f510d", "Administrator", "ADMINISTRATOR" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "96ecd6ad-85da-4f7d-8a3a-acd9ba709e2e", 0, "da0c5469-f27b-4795-b324-399f11e8a905", "jos@gmail.com", false, false, null, "JOS@GMAIL.COM", "JOS", null, null, false, "3fc48028-fee6-4605-af2e-8e67af0ce235", false, "Jos" },
+                    { "0b71e91b-0e66-4dea-bd80-077e7472e7c2", 0, "bacf3f28-bae4-474f-b619-a40b8e2e7f1a", "joke@hotmail.com", false, false, null, "JOKE@HOTMAIL.COM", "JOKE", null, null, false, "8ba9ddc6-bc1e-4672-94cb-6508e77a2e07", false, "Joke" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Employees",
+                columns: new[] { "Id", "Age", "Name", "Position" },
+                values: new object[,]
+                {
+                    { new Guid("e310a6cb-6677-4aa6-93c7-2763956f7a97"), 26, "Mark Miens", "Software Developer" },
+                    { new Guid("398d10fe-4b8d-4606-8e9c-bd2c78d4e001"), 29, "Anna Simmons", "Software Developer" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new object[] { "96ecd6ad-85da-4f7d-8a3a-acd9ba709e2e", "af2c13b4-6bb6-40b0-842c-6cacd4e3e10e" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new object[] { "0b71e91b-0e66-4dea-bd80-077e7472e7c2", "759d7c73-04e0-40b3-b590-68010bc1148f" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -208,6 +259,9 @@ namespace IdentityRolConfig.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Employees");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

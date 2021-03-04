@@ -14,7 +14,7 @@ namespace IdentityRolConfig
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().MigrateDatabase().Run();//extension method MigrateDatabase() wordt hier aangeroepen
+            CreateHostBuilder(args).Build().MigrateDatabase().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IdentityRolConfig.Models
 {
-    public class ApplicationContext : IdentityDbContext<IdentityUser>//DbContext
+    public class ApplicationContext : IdentityDbContext<IdentityUser> // DbContext
     {
         public ApplicationContext(DbContextOptions options)
         : base(options)
@@ -16,6 +16,8 @@ namespace IdentityRolConfig.Models
         {
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new UserRoleConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 
